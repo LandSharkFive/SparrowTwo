@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SparrowTwo/SparrowTwo.csproj" />
+  <Project Path="UnitTestOne/UnitTestOne.csproj" />
+</Solution>
