@@ -821,6 +821,20 @@ namespace SparrowTwo
             return this;
         }
 
+        /// <summary> Fluent test helper that resets the node and populates it with Element records.</summary>
+        public BNode WithElements(params Element[] elements)
+        {
+            this.NumKeys = 0;
+            Buffer.AsSpan(DataAreaStart).Clear();
+            Buffer.AsSpan(SlotTableStart, Order * SLOT_SIZE).Clear();
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                InsertAt(i, elements[i].Key, elements[i].Data);
+            }
+
+            return this;
+        }
 
         /// <summary> Fluent test helper that quickly assigns a series of PageIds to the Kid Table for setting up internal node scenarios. </summary>
         public BNode WithChildren(params int[] childIds)
